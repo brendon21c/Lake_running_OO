@@ -19,28 +19,33 @@ public class Times {
         this.lake = lake;
     }
 
-    public void Lake(LinkedList times) {
+    public void Lake(String lake) { // this displays the best time for each lake in the Main class.
 
-        this.timesList = times;
+
         System.out.println("For lake " + getLake() + ", your best running time was: ");
         System.out.println();
-        System.out.println(Collections.min(times));
+        System.out.println(Collections.min(timesList));
 
 
     }
 
-    public LinkedList timeEntry() {
+    /*
+    this method runs through the laks list in the Main and returns the best time for given lake.
+     */
+    public LinkedList timeEntry(String lake) {
 
-        LinkedList timeRun = new LinkedList();
+        this.lake = lake;
+        this.timesList = new LinkedList<>();
+
 
         while (true) {
 
             Scanner timeEntry = new Scanner(System.in);
             Scanner runagain = new Scanner(System.in);
 
-            System.out.println("Enter your run time: ");
+            System.out.println("Enter your run time for lake " + lake + ":");
             Double run = timeEntry.nextDouble();
-            timeRun.add(run);
+            timesList.add(run);
 
             System.out.println();
             System.out.println("Do you want to enter another time?");
@@ -48,13 +53,17 @@ public class Times {
 
             if (timeLoop.equalsIgnoreCase("n")) {
                 break;
+            } else if (timeLoop.equalsIgnoreCase("no")) {
+
+                break;
+
             }
 
         }
 
         return timesList;
-
     }
+
 
 
 }
